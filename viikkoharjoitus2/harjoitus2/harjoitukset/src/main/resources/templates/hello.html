@@ -1,0 +1,16 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Tehtava2</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <div th:if="${ika} &gt; 17">
+        <span th:text="'Welcome ' + ${nimi} + '!'"></span>
+    </div>
+    <div th:if="${ika} &lt; 18">Olet liian nuori</div>
+</body>
+
+</html>

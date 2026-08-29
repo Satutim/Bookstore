@@ -1,0 +1,28 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Ystävät</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>Etunimi</th>
+            <th>Sukunimi</th>
+        </tr>
+        <tr th:each="ystis : ${friends}">
+            <td th:text="${ystis.firstName}">1</td>
+            <td th:text="${ystis.lastName}">Text ...</td>
+        </tr>
+    </table>
+    <h2>Lisää ystävä</h2>
+    <form action="#" th:action="@{/saveFriend}" th:object="${friend}" method="post">
+        <p> Etunimi: <input type="text" th:field="*{firstName}" /> </p>
+        <p> Sukunimi: <input type="text" th:field="*{lastName}" /> </p>
+        <p> <input type="submit" value="Submit" /> </p>
+    </form>
+</body>
+
+</html>

@@ -16,6 +16,10 @@ public class Book {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     private String title;
     private String author;
     private int publicationYear;

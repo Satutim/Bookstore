@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    
+
 <table class="table table-striped">
   <tr>
    <th>Kirjan nimi</th>
@@ -10,5 +10,6 @@
      <tr th:each = "book : ${books}">
        <td th:text="${book.title}"></td>
        <td th:text="${book.author}"></td>
+       <td><a th:href="@{/delete/{id}(id=${book.id})}">Delete</a></td>
      </tr>
 </table>

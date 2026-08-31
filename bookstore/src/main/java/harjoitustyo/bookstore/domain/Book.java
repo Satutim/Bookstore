@@ -12,6 +12,10 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    public Long getId() {
+        return id;
+    }
+
     private String title;
     private String author;
     private int publicationYear;
@@ -22,8 +26,7 @@ public class Book {
 
     }
 
-    public Book(String title, String author, int publicationYear, String isbn, double price)
-    {
+    public Book(String title, String author, int publicationYear, String isbn, double price) {
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
@@ -48,27 +51,27 @@ public class Book {
     }
 
     public int getPublicationYear() {
-    return publicationYear;
+        return publicationYear;
     }
 
     public void setPublicationYear(int publicationYear) {
-    this.publicationYear = publicationYear;
+        this.publicationYear = publicationYear;
     }
 
     public String getIsbn() {
-    return isbn;
+        return isbn;
     }
 
     public void setIsbn(String isbn) {
-    this.isbn = isbn;
+        this.isbn = isbn;
     }
 
     public double getPrice() {
-    return price;
+        return price;
     }
 
     public void setPrice(double price) {
-    this.price = price;
+        this.price = price;
     }
 
     @Override
@@ -77,5 +80,4 @@ public class Book {
                 + ", isbn=" + isbn + ", price=" + price + "]";
     }
 
-   
 }

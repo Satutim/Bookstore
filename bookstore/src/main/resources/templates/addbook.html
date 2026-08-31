@@ -1,0 +1,33 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Add book</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <h1>Kirjan tiedot</h1>
+    <form action="#" th:action="@{/saveBook}" th:object="${book}" method="post">
+        <table>
+            <tr>
+                <td>Kirjan nimi: <input type="text" th:field="*{title}" /></td>
+            </tr>
+            <tr>
+                <td>Kirjailija: <input type="text" th:field="*{author}" /></td>
+            </tr>
+            <tr>
+                <td>Julkaisuvuosi: <input type="text" th:field="*{publicationYear}" /></td>
+            </tr>
+            <tr>
+                <td>ISBN: <input type="text" th:field="*{isbn}" /></td>
+            </tr>
+            <tr>
+                <td>Hinta: <input type="text" th:field="*{price}" /></td>
+            </tr>
+        </table>
+        <p><input type="submit" value="Submit" /></p>
+    </form>
+</body>
+
+</html>

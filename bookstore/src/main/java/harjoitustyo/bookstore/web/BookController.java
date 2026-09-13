@@ -11,15 +11,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import harjoitustyo.bookstore.domain.Book;
 import harjoitustyo.bookstore.domain.BookRepository;
+import harjoitustyo.bookstore.domain.CategoryRepository;
+import jakarta.validation.Valid;
+import org.springframework.validation.BindingResult;
 
 @Controller
 public class BookController {
 
-    public BookController(BookRepository bookRepository) {
+    public BookController(BookRepository bookRepository, CategoryRepository categoryRepository) {
         this.bookRepository = bookRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     private BookRepository bookRepository;
+
+    private CategoryRepository categoryRepository;
 
     @GetMapping("index")
     public String index() {
@@ -35,11 +41,16 @@ public class BookController {
     @GetMapping("/addbook")
     public String addBook(Model model) {
         model.addAttribute("book", new Book());
+        model.addAttribute("categories", categoryRepository.findAll());
         return "addbook";
     }
 
     @PostMapping("/saveBook")
-    public String saveBookToList(@ModelAttribute Book book) {
+    public String saveBookToList(@Valid Book book, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "addbook";
+        }
+
         bookRepository.save(book);
         return "redirect:/booklist";
     }
@@ -53,6 +64,7 @@ public class BookController {
     @RequestMapping(value = "/edit/{id}")
     public String showModBook(@PathVariable("id") Long bookId, Model model) {
         model.addAttribute("book", bookRepository.findById(bookId).get());
+        model.addAttribute("categories", categoryRepository.findAll());
         return "editbook";
     }
 

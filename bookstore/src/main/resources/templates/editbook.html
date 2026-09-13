@@ -9,7 +9,7 @@
 <body>
     <h1>Kirjan uudet tiedot</h1>
     <form action="#" th:action="@{/editBook}" th:object="${book}" method="post">
-    <input type="hidden" th:field="*{id}" class="form-control"/>
+        <input type="hidden" th:field="*{id}" class="form-control" />
         <table>
             <tr>
                 <td>Kirjan nimi: <input type="text" th:field="*{title}" /></td>
@@ -25,6 +25,14 @@
             </tr>
             <tr>
                 <td>Hinta: <input type="text" th:field="*{price}" /></td>
+            </tr>
+            <tr>
+                <td>Kategoria:
+                    <select th:field="*{category}">
+                        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}">
+                        </option>
+                    </select>
+                </td>
             </tr>
         </table>
         <p><input type="submit" value="Submit" /></p>

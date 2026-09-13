@@ -4,6 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.Size;
 
 @Entity
 // @Table (name = "Kirja")
@@ -20,22 +23,31 @@ public class Book {
         this.id = id;
     }
 
+    @Size(min = 2, max = 30, message = "Tarkista pituus")
     private String title;
+
+    @Size(min = 2, max = 30, message = "Tarkista pituus")
     private String author;
+
     private int publicationYear;
     private String isbn;
     private double price;
+
+    @ManyToOne
+    @JoinColumn(name = "categoryid")
+    private Category category;
 
     public Book() {
 
     }
 
-    public Book(String title, String author, int publicationYear, String isbn, double price) {
+    public Book(String title, String author, int publicationYear, String isbn, double price, Category category) {
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
         this.isbn = isbn;
         this.price = price;
+        this.category = category;
     }
 
     public String getTitle() {
@@ -76,6 +88,14 @@ public class Book {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override

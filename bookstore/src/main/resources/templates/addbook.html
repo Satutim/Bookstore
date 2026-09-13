@@ -10,11 +10,14 @@
     <h1>Kirjan tiedot</h1>
     <form action="#" th:action="@{/saveBook}" th:object="${book}" method="post">
         <table>
+
             <tr>
                 <td>Kirjan nimi: <input type="text" th:field="*{title}" /></td>
+                <td th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Error</td>
             </tr>
             <tr>
                 <td>Kirjailija: <input type="text" th:field="*{author}" /></td>
+                <td th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Error</td>
             </tr>
             <tr>
                 <td>Julkaisuvuosi: <input type="text" th:field="*{publicationYear}" /></td>
@@ -24,6 +27,14 @@
             </tr>
             <tr>
                 <td>Hinta: <input type="text" th:field="*{price}" /></td>
+            </tr>
+            <tr>
+                <td>Kategoria:
+                    <select th:field="*{category}">
+                        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}">
+                        </option>
+                    </select>
+                </td>
             </tr>
         </table>
         <p><input type="submit" value="Submit" /></p>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kirjaudu</title>
+</head>
+
+<body>
+
+    <h1>Kirjaudu Bookstoreen</h1>
+
+    <form th:action="@{/login}" method="post">
+
+        <label>Käyttäjänimi:</label>
+        <input type="text" name="username">
+
+        <br><br>
+
+        <label>Salasana:</label>
+        <input type="password" name="password">
+
+        <br><br>
+
+        <button type="submit">Kirjaudu</button>
+
+    </form>
+
+</body>
+
+</html>

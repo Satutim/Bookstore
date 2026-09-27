@@ -10,7 +10,14 @@
 
     <h1>Tervetuloa Bookstoreen!</h1>
 
+    <a href="/booklist">Kirjalista</a>
+
+    <br><br>
+
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Kirjaudu ulos">
+    </form>
+
 </body>
 
 </html>
-<a href="/booklist">Kirjalista</a>
